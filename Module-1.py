@@ -1,16 +1,21 @@
 import PIL
-import pandas
+from resizeimage import resizeimage
 from PIL import Image
 
 filename = "C:/Users/Yash Makwana/Desktop/Project/13_left.jpeg"
+new_width = 512
 try:
 	with Image.open(filename) as image:
 		
 		
 		aspect_ratio = image.size[0] / image.size[1]
+		print("Aspect Ratio:", aspect_ratio)
 		print("Width:", image.size[0])
 		print("Height:", image.size[1])
-		#image.resize((basewidth, baseheight), PIL.Image.ANTIALIAS)
-		#image.save('resized_13_left.jpeg')
+
+		new_height = int((new_width / aspect_ratio))
+
+		cover = resizeimage.resize_cover(image, [512, 512], validate = False)
+		cover.save('13_left.jpeg', image.format)
 except IOError as e:
 	raise e
