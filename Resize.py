@@ -16,7 +16,8 @@ try:
 		new_height = int((new_width / aspect_ratio))
 
 		#resize and display
-		image = resizeimage.resize_cover(image, [new_width, new_height], validate = False)
+		#image = resizeimage.resize_cover(image, [new_width, new_height], validate = False)
+		image = image.resize((new_width,new_height), Image.ANTIALIAS)
 		image.show(title="Resized")
 
 except IOError as e:
