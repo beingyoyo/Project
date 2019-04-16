@@ -24,10 +24,40 @@ class preprocess:
 
 		#resize and display
 		#image = resizeimage.resize_cover(image, [new_width, new_height], validate = False)
-		image = self.image.resize((new_width,new_height), Image.ANTIALIAS)
-		image.show(title="Resized")
+		self.image = self.image.resize((new_width,new_height), Image.ANTIALIAS)
+		self.image.show(title="Resized")
+
+	def quadrants(self):
+		width=self.image.size[0]
+		height=self.image.size[1]
+		half_width=width//2
+		half_height=height//2
+
+		#image.crop(x1,y1,x2,y2) crops the image taking as input (x1,y1):top left co-ordinates & (x2,y2):bottom right co-ordinates
+
+		#Quadrant 1
+		self.image.crop((half_width,0,width,half_height)).show()
+
+		#Quadrant 2
+		self.image.crop((0,0,half_width,half_height)).show()	
+
+		#Quadrant 3			
+		self.image.crop((0,half_height,half_width,height)).show()
+
+		#Quadrant 4
+		self.image.crop((half_width,half_height,width,height)).show()
+
+	def rgb(self):
+		#image.split() returns a tuple comprising of 3 images, one for each r, g & b
+		print(self.image.split())
+
+		self.image.split()[0].show()
+		self.image.split()[1].show()
+		self.image.split()[2].show()
 
 filename = "C:/Users/sniha/Desktop/train/16_right.jpeg"
 	
 obj=preprocess(filename)
 obj.resize()
+obj.rgb()
+obj.quadrants()
