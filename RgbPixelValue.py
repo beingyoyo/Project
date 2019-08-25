@@ -1,5 +1,5 @@
 from PIL import Image
-list1 = ['10_left','10_right','13_left','13_right','15_left','15_right','16_left','16_right','17_left' ,'17_right']
+list1 = ['30_left']
 i = 0
 while i < len(list1):
     list2 = list1[i]+'.jpeg'
