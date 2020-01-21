@@ -1,0 +1,11 @@
+{% extends 'dr_ui/navbaritems.html' %}
+        {% block content %}
+            <div class="bg-success">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="images">
+                        <button type="submit"> Upload Image</button>
+                </form>
+            </div>
+        {% endblock %}
+
