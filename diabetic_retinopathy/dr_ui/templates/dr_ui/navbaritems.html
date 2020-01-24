@@ -18,20 +18,27 @@
         </button>
     </nav>
     <br>
-
     <br>
-    {% block content %}
-            <div class="container">
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <input type="file" name="images">
+    <br>
+    <div class="container">
+        <div class="card card text-center">
+            <div class="card-body">
+                {% block content %}
+                    <h5 class="card-title">File Upload</h5>
+                    <br>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="images">
+                        <br> <br> <br>
                         <button type="submit"> Upload Image</button>
-                </form>
-            </div>
+                    </form>
             {% if url %}
                 <p>Uploaded file : <a href="{{ url }}">{{ url }}</a> </p>
             {% endif %}
         {% endblock %}
+            </div>
+        </div>
+    </div>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
