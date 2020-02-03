@@ -1,7 +1,10 @@
-from django.urls import path, include
+from django.urls import path
+from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from . import views
 urlpatterns = [
-    path("", views.homepage, name = "home")
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("", views.Homepage.as_view(), name = "homePage"),
+    path("images/", views.Uploaded_images.as_view(), name='imagesUploaded')
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
