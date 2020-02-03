@@ -1,0 +1,14 @@
+{% extends 'dr_ui/navbaritems.html' %}
+{% load static %}
+{% block content %}
+<div class="card-columns">
+    {% for i in images %}
+    {% if i.imageField %}
+        <div class="card">
+            <img src="{{i.imageField.url}}" class="card-img-top">
+        </div>
+    <p>Uploaded file : <a href="{{ i.imageField.url }}">{{ i.imageField.url }}</a> </p>
+    {% endif %}
+    {% endfor %}
+</div>
+{%endblock%}}
