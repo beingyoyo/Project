@@ -1,13 +1,16 @@
 from django.shortcuts import render
-from django.core.files.storage import FileSystemStorage
+from .forms import PhotoUploadModelForm
+from django.views.generic import ListView, FormView
+from .models import ImageUpload
 # Create your views here.
-def homepage(request):
-    context = {}
-    if request.method == "POST":
-        uploaded_file = request.FILES['images']
-        fs = FileSystemStorage()
-        name = fs.save(uploaded_file.name, uploaded_file)
-        context['url'] = fs.url(name)
+class Homepage(FormView):
+    form_class = PhotoUploadModelForm
+    template_name = 'dr_ui/home.html'
+    success_url = '/'
+    context_object_name = 'img'
 
-    return render(request, "dr_ui/navbaritems.html", context)
-
+class Uploaded_images(ListView):
+    model = ImageUpload
+    images = ImageUpload.objects.all
+    context_object_name = 'images'
+    template_name = 'dr_ui/images_uploaded.html'
