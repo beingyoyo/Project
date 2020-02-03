@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Image_upload
+from .models import ImageUpload
 # Register your models here.
-admin.site.register(Image_upload)
+admin.site.register(ImageUpload)
