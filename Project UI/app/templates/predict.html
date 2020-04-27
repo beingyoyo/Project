@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="{{ url_for('static',filename='heart.jpg') }}" type="image/jpg">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Font+Name">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -22,14 +22,14 @@
                 </div>
                 <div class="col-sm-5 mt-5">
                     <input class="btn btn-lg mx-lg-5 border border-white text-center text-white" id="image-selector" type="file">
-                    <button class="btn btn-lg border border-white text-center text-white highlight_text" type="submit" id="predict-button">Predict</button>
-                        <div class="border border-white mt-5">
-                        <p class="font-weight-bold  text-center text-white h2">Predictions</p>
-                        <p class="text-center text-white">Level 0 (No DR): <span class="text-monospace text-center text-white" id="0-prediction"></span></p>
-                        <p class="text-center text-white">Level 1 (Mild): <span class="text-monospace text-center text-white" id="1-prediction"></span></p>
-                        <p class="text-center text-white">Level 2 (Moderate): <span class="text-monospace text-center text-white" id="2-prediction"></span></p>
-                        <p class="text-center text-white">Level 3 (Severe): <span class="text-monospace text-center text-white" id="3-prediction"></span></p>
-                        <p class="text-center text-white">Level 4 (Proliferative DR): <span  class="text-monospace text-center text-white" id="4-prediction"></span></p>
+                    <button class="btn btn-lg border border-white text-center text-white highlight_text" type="submit" id="predict-button" onclick="">Predict</button>
+                        <div class="border border-white mt-5 text-center">
+                        <p class="font-weight-bold text-white h2">Predictions</p>
+                        <p class="text-white">Level 0 (No DR): <span class="text-white" id="0-prediction"></span></p>
+                        <p class="text-white">Level 1 (Mild): <span class="text-white" id="1-prediction"></span></p>
+                        <p class="text-white">Level 2 (Moderate): <span class="text-white" id="2-prediction"></span></p>
+                        <p class="text-white">Level 3 (Severe): <span class="text-white" id="3-prediction"></span></p>
+                        <p class="text-white">Level 4 (Proliferative DR): <span  class="text-white" id="4-prediction"></span></p>
                         <img class="rounded mx-auto d-block" id="selected-image" />
                         </div>
                 </div>
@@ -62,11 +62,11 @@
                 $.post("http://127.0.0.1:5000/predict", JSON.stringify(message), function(response){
                     console.log("response returned");
                     console.log(response);
-                    $("#0-prediction").text(response.pred.l5.toFixed(6));
-                    $("#1-prediction").text(response.pred.l1.toFixed(6));
-                    $("#2-prediction").text(response.pred.l2.toFixed(6));
-                    $("#3-prediction").text(response.pred.l3.toFixed(6));
-                    $("#4-prediction").text(response.pred.l4.toFixed(6));
+                    $("#0-prediction").text(response.pred.l5.toFixed(4));
+                    $("#1-prediction").text(response.pred.l1.toFixed(4));
+                    $("#2-prediction").text(response.pred.l2.toFixed(4));
+                    $("#3-prediction").text(response.pred.l3.toFixed(4));
+                    $("#4-prediction").text(response.pred.l4.toFixed(4));
                 });
             });
         </script>
